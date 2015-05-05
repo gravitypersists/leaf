@@ -11,30 +11,29 @@
 
     var configuration = {
 
-      contentTree: [
+      children: [
         {
           id: "Text:0",
-          content: {
+          config: {
             "text": "This is one element."
-          },
-          layout: null
+          }
         }, {
           id: "Text:1",
-          content: {
+          config: {
             "text": "This is the next. I want to inline a math equation into this one. <<Katex:0>>. Easy."
           },
           layout: null
           children: [
             {
               id: "Katex:1.0",
-              content: {
+              config: {
                 "latex": "\sqrt{voila}"
-              },
-              layout: null
+              }
             }
           ]
         }
-      ]
+      ],
+      layout: null
 
     }
 
