@@ -4,7 +4,7 @@ var watchify = require('gulp-watchify');
 var babelify = require('babelify');
 
 gulp.task('browserify', watchify(function (watchify) {
-  return gulp.src('main.js')
+  return gulp.src(['main.js', 'examples/example-loader.js'])
     .pipe(watchify({
       watch: false,
       setup: function (bundle) {

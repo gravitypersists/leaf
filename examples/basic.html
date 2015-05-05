@@ -1,0 +1,50 @@
+<html>
+<head>
+  <title>Basic Example</title>
+  <script type="text/javascript" src="../dist/example-loader.js"></script>
+</head>
+<body>
+
+  <div id='top-node'></div>
+
+  <script type="text/javascript">
+
+    var configuration = {
+
+      contentTree: [
+        {
+          id: "Text:0",
+          content: {
+            "text": "This is one element."
+          },
+          layout: null
+        }, {
+          id: "Text:1",
+          content: {
+            "text": "This is the next. I want to inline a math equation into this one. <<Katex:0>>. Easy."
+          },
+          layout: null
+          children: [
+            {
+              id: "Katex:1.0",
+              content: {
+                "latex": "\sqrt{voila}"
+              },
+              layout: null
+            }
+          ]
+        }
+      ]
+
+    }
+
+    var options = {
+      el: document.querySelector('#top-node')
+    }
+
+    new Leaf(configuration, options);
+
+  </script>
+
+</body>
+</html>
