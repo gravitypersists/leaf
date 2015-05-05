@@ -1,0 +1,30 @@
+{
+  "name": "leaf",
+  "version": "1.0.0",
+  "description": "A framework for orchestrating the layout of and the interactions between web components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitpullgravity/leaf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gitpullgravity/leaf/issues"
+  },
+  "homepage": "https://github.com/gitpullgravity/leaf#readme",
+  "dependencies": {
+    "webcomponents.js": "^0.6.1"
+  },
+  "devDependencies": {
+    "babelify": "^6.0.2",
+    "browserify": "^9.0.8",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0",
+    "gulp-watchify": "^0.5.0",
+    "watchify": "^3.2.1"
+  }
+}
