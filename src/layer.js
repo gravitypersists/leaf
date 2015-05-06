@@ -18,11 +18,14 @@ const includes = {
 class Layer {
 
   constructor(elements, layout, depth, el) {
+    this.elements = elements;
+    this.depth = depth;
+
     let layerEl = $create('<div class="leaf-layer"></div>');
     $append(el, layerEl);  
 
     elements.forEach(element => {
-      let facade = this.buildFacade();
+      let facade = this.buildFacade(element);
 
       // equivalent to "var type = element.id.split(':')[0]" and id too.
       // but alas, it doesn't work, so...
@@ -46,10 +49,11 @@ class Layer {
     });
   }
 
-  buildFacade() {
-    let nest = new NestInterface();
+  buildFacade(element) {
+    // it might make sense to construct these APIs as class mixins
+    let nest = new NestInterface(this, element);
     return {
-      nest: nest.nest // seriously?
+      nest: nest.nest.bind(nest) // seriously?
     }
   }
 

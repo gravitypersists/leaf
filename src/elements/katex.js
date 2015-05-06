@@ -1,7 +1,7 @@
 
 function Katex(configuration, el) {
 
-  el.innerHTML = configuration.Katex;
+  el.innerHTML = configuration.latex;
 
 }
 
