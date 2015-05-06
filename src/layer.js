@@ -36,7 +36,9 @@ class Layer {
       // research more. This is just a simple exposed constructor for 
       // the time being.
       if (includes[type]) {
-        var shadow = layerEl.createShadowRoot();
+        let container = $create('<div class="shadow-container"></div>');
+        $append(layerEl, container);
+        var shadow = container.createShadowRoot();
         let childEl = $insert(shadow, '<div class="leaf-element"></div>'); 
         new includes[type](element.config, childEl, facade);
       }
