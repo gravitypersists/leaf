@@ -11,7 +11,9 @@ const NestInterface = require('./apis/nesting');
 // leaf-sdk's output to work with leaf's input.
 const includes = {
   text: require('./elements/text'),
-  katex: require('./elements/katex')
+  katex: require('./elements/katex'),
+  picker: require('./elements/picker'),
+  image: require('./elements/image'),
 }
 
 
