@@ -17,7 +17,7 @@ class NestInterface {
       return `<div 
                 class="leaf-layer"
                 data-leaf-node="${ id }"
-                style="display: inline;">
+                style="display: inline-block;">
               </div>`
     });
     $html(el, parsed);
