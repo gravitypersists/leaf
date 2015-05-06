@@ -10,6 +10,9 @@
 
   <script type="text/javascript">
 
+    // it's worth noting that this data format is not meant to be human
+    // editable, though it might be by programmers, an upcoming authoring
+    // tool will be responsible for constructing it. 
     var configuration = {
 
       children: [
@@ -30,6 +33,25 @@
               config: {
                 "latex": "\sqrt{voila}"
               }
+            }
+          ]
+        }, {
+          id: "Picker:2",
+          config: {
+            options: [
+              {
+                option: '<<Image:2.0>>',
+                correct: true
+              }, {
+                option: '<<Image:2.1>>',
+                correct: false
+              }
+            ]
+          },
+          layout: null,
+          children: [
+            {
+
             }
           ]
         }

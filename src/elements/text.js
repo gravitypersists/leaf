@@ -1,7 +1,7 @@
 
-function Text(configuration, el) {
+function Text(configuration, el, api) {
 
-  el.innerHTML = configuration.text;
+  api.nest(configuration.text, el);
 
 }
 
