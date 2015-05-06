@@ -26,14 +26,14 @@
         }, {
           id: "Text:1",
           config: {
-            "text": "This is the next. I want to inline a math equation into this one. <<Katex:0>> Easy."
+            "text": "This is the next. I want to inline a math equation into this one. <<Katex:1.0>> Easy."
           },
           layout: null,
           children: [
             {
               id: "Katex:1.0",
               config: {
-                "latex": "c = \\pm\\sqrt{a^2 + b^2}"
+                "latex": "e^{i\\pi}+1 = 0"
               }
             }
           ]
@@ -42,10 +42,10 @@
           config: {
             options: [
               {
-                option: '<<Image:2.0>>',
+                option: "<<Image:2.0>>",
                 correct: true
               }, {
-                option: '<<Image:2.1>>',
+                option: "<<Image:2.1>>",
                 correct: false
               }
             ]
@@ -53,7 +53,15 @@
           layout: null,
           children: [
             {
-
+              id: "Image:2.0",
+              config: {
+                source: "https://placekitten.com/g/200/201"
+              }
+            }, {
+              id: "Image:2.1",
+              config: {
+                source: "https://placekitten.com/g/201/200"
+              }
             }
           ]
         }
