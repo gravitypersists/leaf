@@ -8,7 +8,8 @@ class NestInterface {
 
   nest(content, el) {
     let parsed = content.replace(/<<.+>>/, x => {
-      return `<div class="leaf-layer" data="leaf-node-${ x.split(':')[1] }"></div>`
+      let id =  x.split(':')[1].replace('>>', '');
+      return `<div class="leaf-layer" data="leaf-node-${ id }"></div>`
     });
     $html(el, parsed);
     let domList = el.querySelectorAll(':scope > .leaf-layer')

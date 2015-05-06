@@ -1,6 +1,6 @@
 const $create = require('./dom/create');
-const $html = require('./dom/html');
 const $append = require('./dom/append');
+const $insert = require('./dom/insert');
 
 const NestInterface = require('./apis/nesting');
 
@@ -10,7 +10,8 @@ const NestInterface = require('./apis/nesting');
 // consumable packages, then it becomes a question of how to configure
 // leaf-sdk's output to work with leaf's input.
 const includes = {
-  text: require('./elements/text')
+  text: require('./elements/text'),
+  katex: require('./elements/katex')
 }
 
 
@@ -35,10 +36,9 @@ class Layer {
       // research more. This is just a simple exposed constructor for 
       // the time being.
       if (includes[type]) {
-        let childEl = $create('<div class="leaf-element"></div>');
-        $append(layerEl, childEl); 
-        var shadow = childEl.createShadowRoot();
-        new includes[type](element.config, shadow, facade);
+        var shadow = layerEl.createShadowRoot();
+        let childEl = $insert(shadow, '<div class="leaf-element"></div>'); 
+        new includes[type](element.config, childEl, facade);
       }
 
     });
