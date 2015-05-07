@@ -3,6 +3,7 @@ const $append = require('./dom/append');
 const $insert = require('./dom/insert');
 
 const NestInterface = require('./apis/nesting');
+const CommunicationInterface = require('./apis/communication');
 
 // In the future elements will probably be downloaded on demand with 
 // webpack, but some will be packaged with the framework themselves,
@@ -54,8 +55,13 @@ class Layer {
   buildFacade(element) {
     // it might make sense to construct these APIs as class mixins
     let nest = new NestInterface(this, element);
+    let comm = new CommunicationInterface();
     return {
-      nest: nest.nest.bind(nest) // seriously?
+      nest: nest.nest.bind(nest), // seriously?
+      publish: comm.publish.bind(comm),
+      subscribe: comm.subscribe.bind(comm),
+      expose: comm.expose.bind(comm),
+      observe: comm.observe.bind(comm),
     }
   }
 
