@@ -6,7 +6,7 @@ const NestInterface = require('./apis/nesting');
 const CommunicationInterface = require('./apis/communication');
 
 // In the future elements will probably be downloaded on demand with 
-// webpack, but some will be packaged with the framework themselves,
+// webpack, but some will be packaged within the framework themselves,
 // for now we include them all here until we have leaf-sdk publishing
 // consumable packages, then it becomes a question of how to configure
 // leaf-sdk's output to work with leaf's input.
@@ -60,6 +60,10 @@ class Layer {
       expose: comm.expose.bind(comm),
       observe: comm.observe.bind(comm),
     }
+  }
+
+  buildChildLayer(elements, layout, el) {
+    return new Layer(elements, layout, 0, el, this.leafScope);
   }
 
 }

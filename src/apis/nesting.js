@@ -29,7 +29,7 @@ class NestInterface {
     let domList = el.querySelectorAll(':scope > .leaf-layer');
     Array.prototype.forEach.call(domList, child => {
       let id = child.getAttribute('data-leaf-node');
-      new this.layer.constructor(filteredChildren, this.element.layout, 0, child);
+      this.layer.buildChildLayer(filteredChildren, this.element.layout, child);
     });
   }
 
