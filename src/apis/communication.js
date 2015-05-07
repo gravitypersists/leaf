@@ -20,12 +20,29 @@ class CommunicationInterface {
 
   }
 
-  expose() {
-    console.log('expose');
+  expose(property, value) {
+    let id = this.element.id;
+    this.exposed[id] = this.exposed[id] || {};
+    this.exposed[id][property] = value;
+
+    // Now check for observations on this property
+    let obs = this.observations[this.element.id];
+    if (obs && obs[property]) {
+      obs[property].forEach(callbackObj => {
+        callbackObj.callbackFn.call(callbackObj.context, value);
+      });
+    }
   }
 
-  observe() {
-    console.log('observe');
+  // for now we just do elementId, soon it will be [elementIds], I'm 
+  // putting off those decisions until the authoring tool(s) are around
+  observe(elementId, property, callback, context) {
+    let ob = this.observations[elementId] = this.observations[elementId] || {};
+    let callbacks = ob[property] = ob[property] || [];
+    callbacks.push({
+      callbackFn: callback,
+      context: context
+    })
   }
 
 }
