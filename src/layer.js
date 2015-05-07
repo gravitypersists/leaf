@@ -15,6 +15,7 @@ const includes = {
   katex: require('./elements/katex'),
   picker: require('./elements/picker'),
   image: require('./elements/image'),
+  switch: require('./elements/switch')
 }
 
 

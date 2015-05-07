@@ -26,7 +26,7 @@
         }, {
           id: "Text:1",
           config: {
-            "text": "This is the next. I want to inline a math equation into this one. <<Katex:1.0>> Easy."
+            "text": "This is the next. I want to inline a math equation into this one. <<Katex:1.0>> Easy.<br>Pick the cutest animal:"
           },
           layout: null,
           children: [
@@ -47,6 +47,12 @@
               }, {
                 option: "<<Image:2.1>>",
                 correct: false
+              }, {
+                option: "<<Image:2.2>>",
+                correct: false
+              }, {
+                option: "I like turtles",
+                correct: true
               }
             ]
           },
@@ -62,8 +68,24 @@
               config: {
                 source: "https://placekitten.com/g/201/200"
               }
+            }, {
+              id: "Image:2.2",
+              config: {
+                source: "https://placekitten.com/g/201/201"
+              }
             }
           ]
+        }, {
+          id: "Switch:3",
+          config: {
+            observe: [
+              {
+                id: "Picker:2",
+                property: "correct",
+                condition: "Maybe something here like 'x == true'?"
+              }
+            ]
+          }
         }
       ],
       layout: null
