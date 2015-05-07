@@ -1,8 +1,11 @@
 const Layer = require('./Layer');
 
-function Leaf(configuration, options) {
+class Leaf {
 
-  new Layer(configuration.children, configuration.layout, 0, options.el);
+  constructor (configuration, options) {
+    this.scope = {}; // an object for storing leaf-level data
+    new Layer(configuration.children, configuration.layout, 0, options.el, this.scope);
+  }
 
 }
 

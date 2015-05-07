@@ -20,9 +20,10 @@ const includes = {
 
 class Layer {
 
-  constructor(elements, layout, depth, el) {
+  constructor(elements, layout, depth, el, leafScope) {
     this.elements = elements;
     this.depth = depth;
+    this.leafScope = leafScope; // this object is shared across all layers
 
     let layerEl = $create('<div class="leaf-layer"></div>');
     $append(el, layerEl);  
@@ -31,11 +32,7 @@ class Layer {
       let facade = this.buildFacade(element);
 
       // equivalent to "var type = element.id.split(':')[0]" and id too.
-      // but alas, it doesn't work, so...
-      // let [type, id] = element.id.split(':');
-      let t = element.id;
-      let type = element.id.split(':')[0].toLowerCase();
-      let id = element.id.split(':')[1];
+      let [type, id] = element.id.split(':').map(x => x.toLowerCase());
 
       // Element instantiation is still something I am thinking heavily
       // about. It might use webcomponents.js or it might not, I need to
@@ -55,7 +52,7 @@ class Layer {
   buildFacade(element) {
     // it might make sense to construct these APIs as class mixins
     let nest = new NestInterface(this, element);
-    let comm = new CommunicationInterface();
+    let comm = new CommunicationInterface(this, element);
     return {
       nest: nest.nest.bind(nest), // seriously?
       publish: comm.publish.bind(comm),
