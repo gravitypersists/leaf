@@ -81,10 +81,22 @@
             observe: [
               {
                 id: "Picker:2",
-                property: "correct",
-                condition: "Maybe something here like 'x == true'?"
+                property: "correct"
               }
-            ]
+            ],
+            // logical evaluations still need to be added to the framework
+            switch: "[[Picker:2]].correct == true",
+            cases: {
+              "true": {
+                "nest": "That is correct!",
+                "action": null
+              },
+              "false": {
+                "nest": "That is not correct.",
+                "action": null
+              }
+            }
+
           }
         }
       ],
