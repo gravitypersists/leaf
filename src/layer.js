@@ -26,8 +26,11 @@ class Layer {
     this.depth = depth;
     this.leafScope = leafScope; // this object is shared across all layers
 
-    let layerEl = $create('<div class="leaf-layer"></div>');
-    $append(el, layerEl);  
+    let layerEl = el;
+    if (depth == 0) {
+      layerEl = $create('<div class="leaf-layer" data-leaf-node=":0"></div>');
+      $append(el, layerEl);
+    }
 
     elements.forEach(element => {
       let facade = this.buildFacade(element);
@@ -64,7 +67,7 @@ class Layer {
   }
 
   buildChildLayer(elements, layout, el) {
-    return new Layer(elements, layout, 0, el, this.leafScope);
+    return new Layer(elements, layout, 1, el, this.leafScope);
   }
 
 }
