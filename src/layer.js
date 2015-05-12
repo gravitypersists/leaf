@@ -11,11 +11,11 @@ const CommunicationInterface = require('./apis/communication');
 // consumable packages, then it becomes a question of how to configure
 // leaf-sdk's output to work with leaf's input.
 const includes = {
-  Text: require('./elements/text'),
-  Katex: require('./elements/katex'),
-  Picker: require('./elements/picker'),
-  Image: require('./elements/image'),
-  Switch: require('./elements/switch')
+  Text: require('./elements/text/text.js'),
+  Katex: require('./elements/katex/katex.js'),
+  Picker: require('./elements/picker/picker.js'),
+  Image: require('./elements/image/image.js'),
+  Switch: require('./elements/switch/switch.js')
 }
 
 

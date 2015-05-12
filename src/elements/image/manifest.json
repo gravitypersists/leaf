@@ -1,0 +1,10 @@
+{
+  "configSchema": [
+    {
+      "type": "Input",
+      "key": "source",
+      "placeholder": "Enter a url",
+      "label": "Image source:"
+    }
+  ]
+}

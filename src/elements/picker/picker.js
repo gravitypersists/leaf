@@ -1,4 +1,4 @@
-const $removeClass = require('../dom/remove-class')
+const $removeClass = require('../../dom/remove-class')
 
 function Picker(config, el, api) {
 

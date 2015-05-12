@@ -1,0 +1,10 @@
+{
+  "configSchema": [
+    {
+      "type": "Input",
+      "key": "latex",
+      "placeholder": "Must be in LaTeX",
+      "label": "Maths:"
+    }
+  ]
+}

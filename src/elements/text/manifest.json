@@ -1,0 +1,8 @@
+{
+  "configSchema": [
+    {
+      "type": "Textarea",
+      "key": "text"
+    }
+  ]
+}

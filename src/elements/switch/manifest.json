@@ -1,0 +1,12 @@
+{
+  "configSchema": [
+    {
+      "type": "Array",
+      "key": "cases",
+      "buttonLabel": "(+) Add a case",
+      "schema": [
+
+      ]
+    }
+  ]
+}
