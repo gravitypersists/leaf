@@ -23,7 +23,11 @@ class NestInterface {
     $html(el, parsed);
 
     let groupedById = {};
-    this.element.children.forEach((child) => groupedById[child.id] = child);
+    this.element.children.forEach((child) => {
+      groupedById[child.layerId + ':' + child.elementId] = child;
+    });
+    // elements may have other children residing in other layers,
+    // we just want the ones that were found by parsing the nest
     let filteredChildren = children.map(childId => groupedById[childId]);
 
     let domList = el.querySelectorAll(':scope > .leaf-layer');

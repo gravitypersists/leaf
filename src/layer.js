@@ -11,11 +11,11 @@ const CommunicationInterface = require('./apis/communication');
 // consumable packages, then it becomes a question of how to configure
 // leaf-sdk's output to work with leaf's input.
 const includes = {
-  text: require('./elements/text'),
-  katex: require('./elements/katex'),
-  picker: require('./elements/picker'),
-  image: require('./elements/image'),
-  switch: require('./elements/switch')
+  Text: require('./elements/text'),
+  Katex: require('./elements/katex'),
+  Picker: require('./elements/picker'),
+  Image: require('./elements/image'),
+  Switch: require('./elements/switch')
 }
 
 
@@ -28,7 +28,7 @@ class Layer {
 
     let layerEl = el;
     if (depth == 0) {
-      layerEl = $create('<div class="leaf-layer" data-leaf-node=":0"></div>');
+      layerEl = $create('<div class="leaf-layer" data-leaf-node="0:"></div>');
       $append(el, layerEl);
     }
 
@@ -36,18 +36,18 @@ class Layer {
       let facade = this.buildFacade(element);
 
       // equivalent to "var type = element.id.split(':')[0]" and id too.
-      let [type, id] = element.id.split(':').map(x => x.toLowerCase());
+      // let [type, id] = element.id.split(':').map(x => x.toLowerCase());
 
       // Element instantiation is still something I am thinking heavily
       // about. It might use webcomponents.js or it might not, I need to
       // research more. This is just a simple exposed constructor for 
       // the time being.
-      if (includes[type]) {
+      if (includes[element.type]) {
         let container = $create('<div class="shadow-container"></div>');
         $append(layerEl, container);
         var shadow = container.createShadowRoot();
         let childEl = $insert(shadow, '<div class="leaf-element"></div>'); 
-        new includes[type](element.config, childEl, facade);
+        new includes[element.type](element.config, childEl, facade);
       }
 
     });

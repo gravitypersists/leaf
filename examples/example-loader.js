@@ -1,8 +1,7 @@
 var Leaf = require('../src/leaf');
-var $ = require('jquery');
 
 var options = {
-  el: $('#top-node')[0]
+  el: document.querySelector('#top-node')
 }
 
 var configuration = require('./basic.json');

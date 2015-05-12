@@ -1,20 +1,26 @@
 {
   "children": [
     {
-      "id": "Text:0",
+      "layerId": "0",
+      "elementId": 0,
+      "type": "Text",
       "config": {
         "text": "This is one element."
       }
     },
     {
-      "id": "Text:1",
+      "elementId": 1,
+      "layerId": "0",
+      "type": "Text",
       "config": {
-        "text": "This is the next. I want to inline a math equation into this one. <<Katex:1.0>> Easy.<br>Pick the cutest animal:"
+        "text": "This is the next. I want to inline a math equation into this one. <<0.0:0>> Easy.<br>Pick the cutest animal:"
       },
       "layout": null,
       "children": [
         {
-          "id": "Katex:1.0",
+          "layerId": "0.0",
+          "elementId": 0,
+          "type": "Katex",
           "config": {
             "latex": "e^{i\\pi}+1 = 0"
           }
@@ -22,19 +28,21 @@
       ]
     },
     {
-      "id": "Picker:2",
+      "layerId": "0",
+      "elementId": 2,
+      "type": "Picker",
       "config": {
         "options": [
           {
-            "option": "<<Image:2.0>>",
+            "option": "<<0.1:0>>",
             "correct": true
           },
           {
-            "option": "<<Image:2.1>>",
+            "option": "<<0.2:0>>",
             "correct": false
           },
           {
-            "option": "<<Image:2.2>>",
+            "option": "<<0.3:0>>",
             "correct": false
           },
           {
@@ -46,19 +54,25 @@
       "layout": null,
       "children": [
         {
-          "id": "Image:2.0",
+          "layerId": "0.1",
+          "elementId": 0,
+          "type": "Image",
           "config": {
             "source": "https:\/\/placekitten.com\/g\/200\/201"
           }
         },
         {
-          "id": "Image:2.1",
+          "layerId": "0.2",
+          "elementId": 0,
+          "type": "Image",
           "config": {
             "source": "https:\/\/placekitten.com\/g\/201\/200"
           }
         },
         {
-          "id": "Image:2.2",
+          "layerId": "0.3",
+          "elementId": 0,
+          "type": "Image",
           "config": {
             "source": "https:\/\/placekitten.com\/g\/201\/201"
           }
@@ -66,15 +80,17 @@
       ]
     },
     {
-      "id": "Switch:3",
+      "layerId": "0",
+      "elementId": 3,
+      "type": "Switch",
       "config": {
         "observe": [
           {
-            "id": "Picker:2",
+            "id": "0:2",
             "property": "correct"
           }
         ],
-        "switch": "[[Picker:2]].correct == true",
+        "switch": "[[0:2]].correct == true",
         "cases": {
           "true": {
             "nest": "That is correct!",
