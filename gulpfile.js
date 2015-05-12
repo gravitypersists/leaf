@@ -21,7 +21,7 @@ gulp.task('babel', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch('src/**/*.js', ['babel', 'browserify']);
+  gulp.watch(['src/**/*.js', 'examples/*.json'], ['babel', 'browserify']);
 });
 
 gulp.task('default', ['babel', 'browserify', 'watch']);

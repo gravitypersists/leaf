@@ -26,6 +26,7 @@
     "gulp": "^3.8.11",
     "gulp-babel": "^5.1.0",
     "gulp-watchify": "^0.5.0",
+    "jquery": "^2.1.4",
     "watchify": "^3.2.1"
   }
 }

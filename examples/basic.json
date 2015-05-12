@@ -1,0 +1,92 @@
+{
+  "children": [
+    {
+      "id": "Text:0",
+      "config": {
+        "text": "This is one element."
+      }
+    },
+    {
+      "id": "Text:1",
+      "config": {
+        "text": "This is the next. I want to inline a math equation into this one. <<Katex:1.0>> Easy.<br>Pick the cutest animal:"
+      },
+      "layout": null,
+      "children": [
+        {
+          "id": "Katex:1.0",
+          "config": {
+            "latex": "e^{i\\pi}+1 = 0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Picker:2",
+      "config": {
+        "options": [
+          {
+            "option": "<<Image:2.0>>",
+            "correct": true
+          },
+          {
+            "option": "<<Image:2.1>>",
+            "correct": false
+          },
+          {
+            "option": "<<Image:2.2>>",
+            "correct": false
+          },
+          {
+            "option": "I like turtles",
+            "correct": true
+          }
+        ]
+      },
+      "layout": null,
+      "children": [
+        {
+          "id": "Image:2.0",
+          "config": {
+            "source": "https:\/\/placekitten.com\/g\/200\/201"
+          }
+        },
+        {
+          "id": "Image:2.1",
+          "config": {
+            "source": "https:\/\/placekitten.com\/g\/201\/200"
+          }
+        },
+        {
+          "id": "Image:2.2",
+          "config": {
+            "source": "https:\/\/placekitten.com\/g\/201\/201"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Switch:3",
+      "config": {
+        "observe": [
+          {
+            "id": "Picker:2",
+            "property": "correct"
+          }
+        ],
+        "switch": "[[Picker:2]].correct == true",
+        "cases": {
+          "true": {
+            "nest": "That is correct!",
+            "action": null
+          },
+          "false": {
+            "nest": "That is not correct.",
+            "action": null
+          }
+        }
+      }
+    }
+  ],
+  "layout": null
+}
