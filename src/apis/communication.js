@@ -21,12 +21,12 @@ class CommunicationInterface {
   }
 
   expose(property, value) {
-    let id = this.element.id;
+    let id = this.element.layerId + ':' + this.element.elementId;
     this.exposed[id] = this.exposed[id] || {};
     this.exposed[id][property] = value;
 
     // Now check for observations on this property
-    let obs = this.observations[this.element.id];
+    let obs = this.observations[id];
     if (obs && obs[property]) {
       obs[property].forEach(callbackObj => {
         callbackObj.callbackFn.call(callbackObj.context, value);
