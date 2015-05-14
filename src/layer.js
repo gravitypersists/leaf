@@ -33,7 +33,6 @@ class Layer {
     }
     for (let id in elements) {
       let element = elements[id];
-      element.generatedId = depth + ':' + id;
       let facade = this.buildFacade(element);
 
       // Element instantiation is still something I am thinking heavily

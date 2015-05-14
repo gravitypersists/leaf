@@ -22,10 +22,9 @@ class NestInterface {
                 style="display: inline-block;">
               </div>`
     });
+    let newDepth = this.layer.depth + '.' + nestObj.layerId;
     let wrapper = $create(`
-      <div class="leaf-layer"
-        data-leaf-node="${ this.element.generatedId }"
-      </div>
+      <div class="leaf-layer" data-leaf-node="${ newDepth }"></div>
     `);
     $html(wrapper, parsed);
     $append(el, wrapper);
@@ -35,7 +34,7 @@ class NestInterface {
       nestObj.children[id].container = leafEl;
     });
     this.layer.buildChildLayer(nestObj.children,
-      this.element.layout, this.layer.depth + '.' + nestObj.layerId);
+                                    this.element.layout, newDepth);
 
     // let groupedById = {};
     // this.element.children.forEach((child) => {

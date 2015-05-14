@@ -88,7 +88,8 @@
             {
               "option": {
                 "layerId": "4",
-                "content": "I like turtles"
+                "content": "I like turtles",
+                "children": {}
               },
               "correct": true
             }
@@ -109,15 +110,17 @@
           "cases": {
             "true": {
               "nest": {
-                "layerId": 5,
-                "content": "That is correct!"
+                "layerId": "5",
+                "content": "That is correct!",
+                "children": {}
               },
               "action": null
             },
             "false": {
               "nest": {
-                "layerId": 6,
-                "content": "That is not correct :("
+                "layerId": "6",
+                "content": "That is not correct :(",
+                "children": {}
               },
               "action": null
             }
