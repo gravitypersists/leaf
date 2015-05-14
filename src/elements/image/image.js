@@ -1,8 +1,13 @@
 
 function Image(configuration, el, api) {
-
-  el.innerHTML = '<img src=' + configuration.source + '>';
-
+  el.innerHTML = `
+    <style>
+      img {
+        display: block;
+      }
+    </style>
+    <img class='img' src=${ configuration.source }>
+  `;
 }
 
 module.exports = Image;
