@@ -27,16 +27,14 @@ class Layer {
     this.leafScope = leafScope; // this object is shared across all layers
 
     let layerEl = el;
-    if (depth == 0) {
+    if (depth === "0") {
       layerEl = $create('<div class="leaf-layer" data-leaf-node="0:"></div>');
       $append(el, layerEl);
     }
-
-    elements.forEach(element => {
+    for (let id in elements) {
+      let element = elements[id];
+      element.generatedId = depth + ':' + id;
       let facade = this.buildFacade(element);
-
-      // equivalent to "var type = element.id.split(':')[0]" and id too.
-      // let [type, id] = element.id.split(':').map(x => x.toLowerCase());
 
       // Element instantiation is still something I am thinking heavily
       // about. It might use webcomponents.js or it might not, I need to
@@ -44,13 +42,12 @@ class Layer {
       // the time being.
       if (includes[element.type]) {
         let container = $create('<div class="shadow-container"></div>');
-        $append(layerEl, container);
+        $append(element.container || layerEl, container);
         var shadow = container.createShadowRoot();
         let childEl = $insert(shadow, '<div class="leaf-element"></div>'); 
         new includes[element.type](element.config, childEl, facade);
       }
-
-    });
+    }
   }
 
   buildFacade(element) {
@@ -66,8 +63,8 @@ class Layer {
     }
   }
 
-  buildChildLayer(elements, layout, el) {
-    return new Layer(elements, layout, 1, el, this.leafScope);
+  buildChildLayer(elements, layout, depth, el) {
+    return new Layer(elements, layout, depth, el, this.leafScope);
   }
 
 }

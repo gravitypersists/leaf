@@ -1,4 +1,6 @@
 const $html = require('../dom/html');
+const $create = require('../dom/create');
+const $append = require('../dom/append');
 
 class NestInterface {
 
@@ -7,34 +9,42 @@ class NestInterface {
     this.element = element;
   }
 
-  nest(content, el) {
-    if (!this.element.children) return;
+  nest(nestObj, el) {
+    // if (!this.element.children) return;
 
     let children = [];
-    let parsed = content.replace(/<<.+>>/, x => {
+    let parsed = nestObj.content.replace(/<<.+>>/, x => {
       let id =  x.replace('<<', '').replace('>>', '');
       children.push(id);
       return `<div 
-                class="leaf-layer"
-                data-leaf-node="${ id }"
+                class="leaf-element"
+                data-leaf-el="${ id }"
                 style="display: inline-block;">
               </div>`
     });
-    $html(el, parsed);
-
-    let groupedById = {};
-    this.element.children.forEach((child) => {
-      groupedById[child.layerId + ':' + child.elementId] = child;
+    let wrapper = $create(`
+      <div class="leaf-layer"
+        data-leaf-node="${ this.element.generatedId }"
+      </div>
+    `);
+    $html(wrapper, parsed);
+    $append(el, wrapper);
+    let domList = wrapper.querySelectorAll(':scope > .leaf-element');
+    Array.prototype.forEach.call(domList, leafEl => {
+      let id = leafEl.getAttribute('data-leaf-el');
+      nestObj.children[id].container = leafEl;
     });
-    // elements may have other children residing in other layers,
-    // we just want the ones that were found by parsing the nest
-    let filteredChildren = children.map(childId => groupedById[childId]);
+    this.layer.buildChildLayer(nestObj.children,
+      this.element.layout, this.layer.depth + '.' + nestObj.layerId);
 
-    let domList = el.querySelectorAll(':scope > .leaf-layer');
-    Array.prototype.forEach.call(domList, child => {
-      let id = child.getAttribute('data-leaf-node');
-      this.layer.buildChildLayer(filteredChildren, this.element.layout, child);
-    });
+    // let groupedById = {};
+    // this.element.children.forEach((child) => {
+    //   groupedById[child.layerId + ':' + child.elementId] = child;
+    // });
+    // // elements may have other children residing in other layers,
+    // // we just want the ones that were found by parsing the nest
+    // let filteredChildren = children.map(childId => groupedById[childId]);
+
   }
 
 }
