@@ -13,7 +13,7 @@ class NestInterface {
     // if (!this.element.children) return;
 
     let children = [];
-    let parsed = nestObj.content.replace(/<<.+>>/, x => {
+    let parsed = nestObj.content.replace(/<<[0-9]+>>/g, x => {
       let id =  x.replace('<<', '').replace('>>', '');
       children.push(id);
       return `<div 
