@@ -72,7 +72,7 @@
             {
               "option": {
                 "layerId": "3",
-                "content":"<<0>>",
+                "content":"<<0>><br><<1>>",
                 "children": {
                   "0": {
                     "elementId": 0,
@@ -80,6 +80,11 @@
                     "config": {
                       "source": "https:\/\/placekitten.com\/g\/201\/200"
                     }
+                  },
+                  "1": {
+                    "elementId": 1,
+                    "type": "EventButton",
+                    "config": {}
                   }
                 }
               },

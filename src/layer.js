@@ -15,7 +15,8 @@ const includes = {
   Katex: require('./elements/katex/katex.js'),
   Picker: require('./elements/picker/picker.js'),
   Image: require('./elements/image/image.js'),
-  Switch: require('./elements/switch/switch.js')
+  Switch: require('./elements/switch/switch.js'),
+  EventButton: require('./elements/event-button/event-button.js')
 }
 
 
