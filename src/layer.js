@@ -55,7 +55,14 @@ class Layer {
         new includes[element.type](element.config, shadow, facade);
       }
 
-
+      // we keep track of these elements by id, so they can be accessed
+      // externally, with tools like leafbuilder
+      this.leafScope.elements[depth+':'+id] = {
+        elementData: element,
+        rebuild: (config) => {
+          new includes[element.type](config, childEl, facade);
+        }
+      }
     }
   }
 
