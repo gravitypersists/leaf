@@ -29,7 +29,7 @@ class Layer {
 
     let layerEl = el;
     if (depth === "0") {
-      layerEl = $create('<div class="leaf-layer" data-leaf-node="0:"></div>');
+      layerEl = $create('<div class="leaf-layer" data-leaf-node="0"></div>');
       $append(el, layerEl);
     }
     for (let id in elements) {
@@ -42,11 +42,20 @@ class Layer {
       // the time being.
       if (includes[element.type]) {
         let container = $create('<div class="shadow-container"></div>');
-        $append(element.container || layerEl, container);
+        // this is display block, but nested is display inline-block
+        // why the inconsistency? Because I haven't integrated layout
+        // support yet.
+        let elementEl = element.container || $insert(layerEl, `<div 
+                                                class="leaf-element"
+                                                data-leaf-el="${ id }"
+                                                style="display: block;">
+                                              </div>`);
+        $append(elementEl, container);
         var shadow = container.createShadowRoot();
-        let childEl = $insert(shadow, '<div class="leaf-element"></div>'); 
-        new includes[element.type](element.config, childEl, facade);
+        new includes[element.type](element.config, shadow, facade);
       }
+
+
     }
   }
 
