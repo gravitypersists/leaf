@@ -40,7 +40,10 @@ class Layer {
       // about. It might use webcomponents.js or it might not, I need to
       // research more. This is just a simple exposed constructor for 
       // the time being.
-      if (includes[element.type]) {
+      let elToRenderInto = null;
+      if (element.type === "Text") {
+        elToRenderInto = layerEl;
+      } else {
         let container = $create('<div class="shadow-container"></div>');
         // this is display block, but nested is display inline-block
         // why the inconsistency? Because I haven't integrated layout
@@ -51,20 +54,20 @@ class Layer {
                                                 style="display: block;">
                                               </div>`);
         $append(elementEl, container);
-        var shadow = container.createShadowRoot();
-        new includes[element.type](element.config, shadow, facade);
-
-        // we keep track of these elements by id, so they can be accessed
-        // externally, with tools like leafbuilder
-        this.leafScope.elements[depth+':'+id] = {
-          elementData: element,
-          rebuild: (config) => {
-            shadow.innerHTML = "";
-            new includes[element.type](config, shadow, facade);
-          }
-        }
-
+        elToRenderInto = container.createShadowRoot();
       }
+
+      new includes[element.type](element.config, elToRenderInto, facade);
+      // we keep track of these elements by id, so they can be accessed
+      // externally, with tools like leafbuilder
+      this.leafScope.elements[depth+':'+id] = {
+        elementData: element,
+        rebuild: (config) => {
+          elToRenderInto.innerHTML = "";
+          new includes[element.type](config, elToRenderInto, facade);
+        }
+      }
+
     }
   }
 

@@ -3,6 +3,12 @@ const Layer = require('./Layer');
 class Leaf {
 
   constructor (configuration, options) {
+    // this is a temporary check, element packaging needs rethinking
+    if (!configuration.manifests) {
+      console.log('manifests are required');
+      return;
+    }
+
     // an object for storing leaf-level data
     this.scope = {
       elements: {}

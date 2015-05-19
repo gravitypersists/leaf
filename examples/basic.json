@@ -136,7 +136,7 @@
   },
   "layouts": {
     "0": {
-      "type": "Lineup",
+      "type": "Document",
       "config": {
         "array": ["0", "1", "2", "3"]
       }

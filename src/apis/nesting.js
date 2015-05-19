@@ -24,8 +24,13 @@ class NestInterface {
     });
     let newDepth = this.layer.depth + '.' + nestObj.layerId;
     let wrapper = $create(`
-      <div class="leaf-layer" data-leaf-node="${ newDepth }"></div>
-    `);
+      <div data-leaf-node="${ newDepth }"></div>
+    `);;
+    if (this.element.type === "Text") {
+      wrapper.classList.add("leaf-text-layer");
+    } else {
+      wrapper.classList.add("leaf-layer");
+    }
     $html(wrapper, parsed);
     $append(el, wrapper);
     let domList = wrapper.querySelectorAll(':scope > .leaf-element');
