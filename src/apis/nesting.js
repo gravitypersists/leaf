@@ -26,10 +26,11 @@ class NestInterface {
     let wrapper = $create(`
       <div data-leaf-node="${ newDepth }"></div>
     `);;
-    if (this.element.type === "Text") {
-      wrapper.classList.add("leaf-text-layer");
+    if (this.element.type === 'Text') {
+      wrapper.classList.add('leaf-text-layer');
+      wrapper.setAttribute('data-leaf-text-id', this.element.elementId);
     } else {
-      wrapper.classList.add("leaf-layer");
+      wrapper.classList.add('leaf-layer');
     }
     $html(wrapper, parsed);
     $append(el, wrapper);
@@ -40,14 +41,6 @@ class NestInterface {
     });
     this.layer.buildChildLayer(nestObj.children,
                                     this.element.layout, newDepth);
-
-    // let groupedById = {};
-    // this.element.children.forEach((child) => {
-    //   groupedById[child.layerId + ':' + child.elementId] = child;
-    // });
-    // // elements may have other children residing in other layers,
-    // // we just want the ones that were found by parsing the nest
-    // let filteredChildren = children.map(childId => groupedById[childId]);
 
   }
 
