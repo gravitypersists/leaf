@@ -17,7 +17,10 @@ class DocumentLayoutEngine {
   render(parent) {
     return this.config['array'].map((id) => {
       let el = $insert(parent, `
-        <div style='display: block;' data-leaf-el='${ id }'></div>
+        <div style='display: block;'
+             data-leaf-el='${ id }'
+             class='leaf-element'>
+        </div>
       `);
       return { id, el };
     });
