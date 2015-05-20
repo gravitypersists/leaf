@@ -1,146 +1,157 @@
 {
   "content": {
-    "layerId": "0",
-    "children": {
-      "0": {
-        "elementId": 0,
-        "type": "Text",
-        "config": {
-          "text": {
-            "layerId": "7",
-            "content": "This is one element",
-            "children": {}
+    "0": {
+      "layerId": "0",
+      "children": {
+        "0": {
+          "elementId": 0,
+          "type": "Text",
+          "config": {
+            "text": {
+              "content": "This is one element",
+              "children": {}
+            }
+          }
+        },
+        "1": {
+          "elementId": 1,
+          "type": "Text",
+          "config": {
+            "text": {
+              "content": "This is the next. I want to inline a math equation into this one. <<0>> Easy.<br>Pick the cutest animal:",
+              "children": {
+                "0": {
+                  "elementId": 0,
+                  "type": "Katex",
+                  "config": {
+                    "latex": "e^{i\\pi}+1 = 0"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "2": {
+          "elementId": 2,
+          "type": "Picker",
+          "config": {
+            "options": [
+              {
+                "option": {
+                  "nestedLayerId": "0.0"
+                },
+                "correct": true
+              },
+              {
+                "option": {
+                  "nestedLayerId": "0.1"
+                },
+                "correct": false
+              },
+              {
+                "option": {
+                  "nestedLayerId": "0.2"
+                },
+                "correct": true
+              }
+            ]
+          }
+        },
+        "3": {
+          "elementId": 3,
+          "type": "Switch",
+          "config": {
+            "observe": [
+              {
+                "id": "0:2",
+                "property": "correct"
+              }
+            ],
+            "switch": "[[0:2]].correct == true",
+            "cases": {
+              "true": {
+                "nest": {
+                  "layerId": "5",
+                  "content": "That is correct!",
+                  "children": {}
+                },
+                "action": null
+              },
+              "false": {
+                "nest": {
+                  "layerId": "6",
+                  "content": "That is not correct :(",
+                  "children": {}
+                },
+                "action": null
+              }
+            }
           }
         }
       },
-      "1": {
-        "elementId": 1,
-        "type": "Text",
+      "layout": {
+        "type": "Document",
         "config": {
-          "text": {
-            "layerId": "0",
-            "content": "This is the next. I want to inline a math equation into this one. <<0>> Easy.<br>Pick the cutest animal:",
-            "children": {
-              "0": {
-                "elementId": 0,
-                "type": "Katex",
-                "config": {
-                  "latex": "e^{i\\pi}+1 = 0"
-                }
-              }
-            },
-          }
-        },
-      },
-      "2": {
-        "elementId": 2,
-        "type": "Picker",
-        "config": {
-          "options": [
-            {
-              "option": {
-                "layerId": "1",
-                "content":"<<0>>",
-                "children": {
-                  "0": {
-                    "elementId": 0,
-                    "type": "Image",
-                    "config": {
-                      "source": "https:\/\/placekitten.com\/g\/200\/201"
-                    }
-                  }
-                }
-              },
-              "correct": true
-            },
-            {
-              "option": {
-                "layerId": "2",
-                "content":"<<0>>",
-                "children": {
-                  "0": {
-                    "elementId": 0,
-                    "type": "Image",
-                    "config": {
-                      "source": "https:\/\/placekitten.com\/g\/201\/201"
-                    }
-                  }
-                }
-              },
-              "correct": false
-            },
-            {
-              "option": {
-                "layerId": "3",
-                "content":"<<0>><br><<1>>",
-                "children": {
-                  "0": {
-                    "elementId": 0,
-                    "type": "Image",
-                    "config": {
-                      "source": "https:\/\/placekitten.com\/g\/201\/200"
-                    }
-                  },
-                  "1": {
-                    "elementId": 1,
-                    "type": "EventButton",
-                    "config": {}
-                  }
-                }
-              },
-              "correct": false
-            },
-            {
-              "option": {
-                "layerId": "4",
-                "content": "I like turtles",
-                "children": {}
-              },
-              "correct": true
-            }
-          ]
-        },     
-      },
-      "3": {
-        "elementId": 3,
-        "type": "Switch",
-        "config": {
-          "observe": [
-            {
-              "id": "0:2",
-              "property": "correct"
-            }
-          ],
-          "switch": "[[0:2]].correct == true",
-          "cases": {
-            "true": {
-              "nest": {
-                "layerId": "5",
-                "content": "That is correct!",
-                "children": {}
-              },
-              "action": null
-            },
-            "false": {
-              "nest": {
-                "layerId": "6",
-                "content": "That is not correct :(",
-                "children": {}
-              },
-              "action": null
-            }
-          }
+          "array": ["0", "1", "2", "3"]
         }
       }
     },
-  },
-  "layouts": {
-    "0": {
-      "type": "Document",
-      "config": {
-        "array": ["0", "1", "2", "3"]
+    "0.0": {
+      "layerId": "0.0",
+      "children": {
+        "0": {
+          "elementId": 0,
+          "type": "Image",
+          "config": {
+            "source": "https:\/\/placekitten.com\/g\/200\/201"
+          }
+        }
+      },
+      "layout": {
+        "type": "Document",
+        "config": {
+          "array": ["0"]
+        }
+      }
+    },
+    "0.1": {
+      "layerId": "0.1",
+      "children": {
+        "0": {
+          "elementId": 0,
+          "type": "Image",
+          "config": {
+            "source": "https:\/\/placekitten.com\/g\/201\/201"
+          }
+        }
+      },
+      "layout": {
+        "type": "Document",
+        "config": {
+          "array": ["0"]
+        }
+      }
+    },
+    "0.2": {
+      "layerId": "0.2",
+      "children": {
+        "0": {
+          "elementId": 0,
+          "type": "Text",
+          "config": {
+            "text": {
+              "content": "I like turtles",
+              "children": {}
+            }
+          }
+        }
+      },
+      "layout": {
+        "type": "Document",
+        "config": {
+          "array": ["0"]
+        }
       }
     }
-
   }
 }

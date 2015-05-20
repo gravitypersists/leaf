@@ -1,7 +1,7 @@
 
 function Text(configuration, el, api) {
 
-  api.nest(configuration.text, el);
+  api.textNest(configuration.text, el);
 
 }
 

@@ -19,56 +19,64 @@ const includes = {
   EventButton: require('./elements/event-button/event-button.js')
 }
 
+// Layout engines take a config, and then a render function
+// takes a DOM element and returns an array of elements, where
+// each item is { id: id of element, el: DOM el to render into }
+const layouts = {
+  Document: require('./layout-engines/document.js')
+}
 
+// "element" refers to a leaf element. "el" refers to DOM element. Sorry.
 class Layer {
 
-  constructor(elements, layout, depth, el, leafScope) {
+  constructor(elements, layout, depth, el, leafScope, layers) {
     this.elements = elements;
     this.depth = depth;
     this.leafScope = leafScope; // this object is shared across all layers
 
-    let layerEl = el;
-    if (depth === "0") {
-      layerEl = $create('<div class="leaf-layer" data-leaf-node="0"></div>');
-      $append(el, layerEl);
+    let layerEl = $create(`
+      <div class="leaf-layer" data-leaf-node="${ depth }"></div>
+    `);
+    $append(el, layerEl);
+
+    let leConstructor = layouts[layout.type]; // le not a joke
+    let layoutEngine = new leConstructor(layout.config);
+    let engineOutput = layoutEngine.render(layerEl);
+
+    engineOutput.forEach((output) => {
+      let element = this.elements[output.id]
+      this.buildElementIntoLayer(element, output.el);
+    });
+  }
+
+  // Element instantiation is still something I am thinking heavily
+  // about. It might use webcomponents.js or it might not, I need to
+  // research more. This is just a simple exposed constructor for 
+  // the time being.
+  buildElementIntoLayer(element, el) {
+
+    let elToRenderInto = null;
+    if (element.type === "Text") {
+      elToRenderInto = el;
+    } else {
+      let container = $create('<div class="shadow-container"></div>');
+      $append(el, container);
+      elToRenderInto = container.createShadowRoot();
     }
-    for (let id in elements) {
-      let element = elements[id];
-      let facade = this.buildFacade(element);
 
-      // Element instantiation is still something I am thinking heavily
-      // about. It might use webcomponents.js or it might not, I need to
-      // research more. This is just a simple exposed constructor for 
-      // the time being.
-      let elToRenderInto = null;
-      if (element.type === "Text") {
-        elToRenderInto = layerEl;
-      } else {
-        let container = $create('<div class="shadow-container"></div>');
-        // this is display block, but nested is display inline-block
-        // why the inconsistency? Because I haven't integrated layout
-        // support yet.
-        let elementEl = element.container || $insert(layerEl, `<div 
-                                                class="leaf-element"
-                                                data-leaf-el="${ id }"
-                                                style="display: block;">
-                                              </div>`);
-        $append(elementEl, container);
-        elToRenderInto = container.createShadowRoot();
+    let facade = this.buildFacade(element);
+    new includes[element.type](element.config, elToRenderInto, facade);
+
+    // we keep track of these elements by id, so they can be accessed
+    // externally, with tools like leafbuilder
+    this.leafScope.elements[this.depth+':'+element.elementId] = {
+      elementData: element,
+      rebuild: (config) => {
+        elToRenderInto.innerHTML = "";
+        new includes[element.type](config, elToRenderInto, facade);
       }
-
-      new includes[element.type](element.config, elToRenderInto, facade);
-      // we keep track of these elements by id, so they can be accessed
-      // externally, with tools like leafbuilder
-      this.leafScope.elements[depth+':'+id] = {
-        elementData: element,
-        rebuild: (config) => {
-          elToRenderInto.innerHTML = "";
-          new includes[element.type](config, elToRenderInto, facade);
-        }
-      }
-
     }
+
   }
 
   buildFacade(element) {
@@ -77,6 +85,7 @@ class Layer {
     let comm = new CommunicationInterface(this, element);
     return {
       nest: nest.nest.bind(nest), // seriously?
+      textNest: nest.textNest.bind(nest),
       publish: comm.publish.bind(comm),
       subscribe: comm.subscribe.bind(comm),
       expose: comm.expose.bind(comm),

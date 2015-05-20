@@ -1,4 +1,4 @@
-const Layer = require('./Layer');
+const Layer = require('./layer');
 
 class Leaf {
 
@@ -11,9 +11,11 @@ class Leaf {
 
     // an object for storing leaf-level data
     this.scope = {
-      elements: {}
+      elements: {},
+      allLayers: configuration.content
     };
-    new Layer(configuration.content.children, configuration.layout, "0", options.el, this.scope);
+    let layerNode = configuration.content["0"];
+    new Layer(layerNode.children, layerNode.layout, "0", options.el, this.scope);
   }
 
   getElementById(id) {
