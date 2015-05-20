@@ -15,6 +15,7 @@ class DocumentLayoutEngine {
 
   // must return an array of {id, el}
   render(parent) {
+    parent.style.width = this.config.width || "auto";
     return this.config['array'].map((id) => {
       let el = $insert(parent, `
         <div style='display: block;'

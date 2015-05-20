@@ -92,6 +92,7 @@
       "layout": {
         "type": "Document",
         "config": {
+          "width": "725px",
           "array": ["0", "1", "2", "3"]
         }
       }
@@ -149,6 +150,7 @@
       "layout": {
         "type": "Document",
         "config": {
+          "width": "auto",
           "array": ["0"]
         }
       }
