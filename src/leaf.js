@@ -1,13 +1,21 @@
-const Layer = require('./Layer');
+const Layer = require('./layer');
 
 class Leaf {
 
   constructor (configuration, options) {
+    // this is a temporary check, element packaging needs rethinking
+    if (!configuration.manifests) {
+      console.log('manifests are required');
+      return;
+    }
+
     // an object for storing leaf-level data
     this.scope = {
-      elements: {}
+      elements: {},
+      allLayers: configuration.content
     };
-    new Layer(configuration.content.children, configuration.layout, "0", options.el, this.scope);
+    let layerNode = configuration.content["0"];
+    new Layer(layerNode.children, layerNode.layout, "0", options.el, this.scope);
   }
 
   getElementById(id) {
