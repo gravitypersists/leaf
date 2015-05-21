@@ -11,6 +11,7 @@ function Picker(config, el, api) {
         padding: 5px;
         margin: 5px;
         cursor: pointer;
+        vertical-align: bottom;
       }
       .option.selected {
         background-color: red;
