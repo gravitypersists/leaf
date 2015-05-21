@@ -1,6 +1,4 @@
 const $html = require('../dom/html');
-const $create = require('../dom/create');
-const $append = require('../dom/append');
 
 class NestInterface {
 
@@ -26,13 +24,9 @@ class NestInterface {
                 style="display: inline-block;">
               </div>`
     });
-    let wrapper = $create(`
-      <div class="leaf-text-layer"></div>
-    `);;
-    wrapper.setAttribute('data-leaf-text-id', this.element.elementId);
-    $html(wrapper, parsed);
-    $append(el, wrapper);
-    let domList = wrapper.querySelectorAll(':scope > .leaf-element');
+    $html(el, parsed);
+    el.classList.add('leaf-text-el'); // leafbuilder infers based on this
+    let domList = el.querySelectorAll(':scope > .leaf-element');
     Array.prototype.forEach.call(domList, childEl => {
       let id = childEl.getAttribute('data-leaf-el');
       this.layer.buildElementIntoLayer(nestObj.children[id], childEl);
