@@ -26,7 +26,7 @@ class NestInterface {
     });
     $html(el, parsed);
     el.classList.add('leaf-text-el'); // leafbuilder infers based on this
-    let domList = el.querySelectorAll(':scope > .leaf-element');
+    let domList = el.querySelectorAll('.leaf-element');
     Array.prototype.forEach.call(domList, childEl => {
       let id = childEl.getAttribute('data-leaf-el');
       this.layer.buildElementIntoLayer(this.layer.elements[id], childEl);
