@@ -18,16 +18,7 @@
           "type": "Text",
           "config": {
             "text": {
-              "content": "This is the next. I want to inline a math equation into this one. <<0>> Easy.<br>Pick the cutest animal:",
-              "children": {
-                "0": {
-                  "elementId": 0,
-                  "type": "Katex",
-                  "config": {
-                    "latex": "e^{i\\pi}+1 = 0"
-                  }
-                }
-              }
+              "content": "This is the next. I want to inline a math equation into this one. <<4>> Easy.<br>Pick the cutest animal:",
             }
           }
         },
@@ -86,6 +77,13 @@
                 "action": null
               }
             }
+          }
+        },
+        "4": {
+          "elementId": 4,
+          "type": "Katex",
+          "config": {
+            "latex": "e^{i\\pi}+1 = 0"
           }
         }
       },
