@@ -10,7 +10,7 @@
           "key": "correct",
           "label": "Correct answer"
         }, {
-          "type": "Textarea",
+          "type": "EmbeddedLayer",
           "key": "option"
         }
       ]
