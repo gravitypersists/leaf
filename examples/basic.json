@@ -85,13 +85,20 @@
           "config": {
             "latex": "e^{i\\pi}+1 = 0"
           }
-        }
+        },
+        "5": {
+          "elementId": 5,
+          "type": "LogicalStatement",
+          "config": {
+            "statement": "true or false"
+          }
+        },
       },
       "layout": {
         "type": "Document",
         "config": {
           "width": "725px",
-          "array": ["0", "1", "2", "3"]
+          "array": ["0", "1", "2", "3", "5"]
         }
       }
     },

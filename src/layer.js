@@ -4,6 +4,7 @@ const $insert = require('./dom/insert');
 
 const NestInterface = require('./apis/nesting');
 const CommunicationInterface = require('./apis/communication');
+const LogicInterface = require('./apis/logic');
 
 // In the future elements will probably be downloaded on demand with 
 // webpack, but some will be packaged within the framework themselves,
@@ -16,7 +17,8 @@ const includes = {
   Picker: require('./elements/picker/picker.js'),
   Image: require('./elements/image/image.js'),
   Switch: require('./elements/switch/switch.js'),
-  EventButton: require('./elements/event-button/event-button.js')
+  EventButton: require('./elements/event-button/event-button.js'),
+  LogicalStatement: require('./elements/logical-statement/logical-statement.js'),
 }
 
 // Layout engines take a config, and then a render function
@@ -83,6 +85,7 @@ class Layer {
     // it might make sense to construct these APIs as class mixins
     let nest = new NestInterface(this, element);
     let comm = new CommunicationInterface(this, element);
+    let logic = new LogicInterface();
     return {
       nest: nest.nest.bind(nest), // seriously?
       textNest: nest.textNest.bind(nest),
@@ -90,6 +93,7 @@ class Layer {
       subscribe: comm.subscribe.bind(comm),
       expose: comm.expose.bind(comm),
       observe: comm.observe.bind(comm),
+      solve: logic.solve.bind(logic)
     }
   }
 

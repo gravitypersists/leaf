@@ -1,0 +1,9 @@
+{
+  "configSchema": [
+    {
+      "type": "Input",
+      "key": "statement",
+      "label": "Statement:"
+    }
+  ]
+}
