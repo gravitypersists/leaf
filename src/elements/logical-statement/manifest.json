@@ -5,5 +5,8 @@
       "key": "statement",
       "label": "Statement:"
     }
-  ]
+  ],
+  "defaultConfig": {
+    "statement": "true or false"
+  }
 }

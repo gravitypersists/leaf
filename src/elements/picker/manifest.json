@@ -15,5 +15,17 @@
         }
       ]
     }
-  ]
+  ],
+  "defaultConfig": {
+    "options": [
+      {
+        "correct": false,
+        "option": ""
+      },
+      {
+        "correct": false,
+        "option": ""
+      }
+    ]
+  }
 }

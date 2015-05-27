@@ -6,5 +6,8 @@
       "placeholder": "Must be in LaTeX",
       "label": "Maths:"
     }
-  ]
+  ],
+  "defaultConfig": {
+    "latex": "e^{i\\pi}+1 = 0"
+  }
 }

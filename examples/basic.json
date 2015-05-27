@@ -8,8 +8,7 @@
           "type": "Text",
           "config": {
             "text": {
-              "content": "This is one element",
-              "children": {}
+              "content": "This is one element"
             }
           }
         },

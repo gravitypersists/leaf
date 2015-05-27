@@ -4,5 +4,10 @@
       "type": "Textarea",
       "key": "text"
     }
-  ]
+  ],
+  "defaultConfig": {
+    "text": {
+      "content": ""
+    }
+  }
 }

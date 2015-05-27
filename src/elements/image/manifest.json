@@ -6,5 +6,8 @@
       "placeholder": "Enter a url",
       "label": "Image source:"
     }
-  ]
+  ],
+  "defaultConfig": {
+    "source": "https:\/\/placekitten.com\/g\/200\/201"
+  }
 }
