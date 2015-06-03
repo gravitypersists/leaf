@@ -1,7 +1,7 @@
 {
   "configSchema": [
     {
-      "type": "Textarea",
+      "type": "EmbeddedLayer",
       "key": "query",
       "placeholder": "Enter a question to ask the student"
     }, {
@@ -9,11 +9,11 @@
       "key": "options",
       "schema": [
         {
-          "type": "Textarea",
+          "type": "EmbeddedLayer",
           "key": "answer",
           "placeholder": "Enter an answer the student can click on"
         }, {
-          "type": "Textarea",
+          "type": "EmbeddedLayer",
           "key": "response",
           "placeholder": "Enter a response the student will see when picking this option"
         }
