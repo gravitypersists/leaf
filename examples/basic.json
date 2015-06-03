@@ -92,12 +92,27 @@
             "statement": "true or false"
           }
         },
+        "6": {
+          "elementId": 6,
+          "type": "JSTest",
+          "config": {
+            "beforeEach": "",
+            "initialCode": "function sum( ) {\n\n}",
+            "tests": [
+              {
+                "test": "expect(sum(1, 20, 300, 4000, 50000)).to.eql(54321)",
+                "feedback": "Your function sum does not sum up multiple arguments."
+              }
+            ],
+            "solution": "function sum() {\nvar count = 0;\nreturn [].reduce.call(arguments, function(accumulator, arg) {\nreturn accumulator + arg;\n});\n}"
+          }
+        }
       },
       "layout": {
         "type": "Document",
         "config": {
           "width": "725px",
-          "array": ["0", "1", "2", "3", "5"]
+          "array": ["6"]
         }
       }
     },

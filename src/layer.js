@@ -19,6 +19,7 @@ const includes = {
   Switch: require('./elements/switch/switch.js'),
   EventButton: require('./elements/event-button/event-button.js'),
   LogicalStatement: require('./elements/logical-statement/logical-statement.js'),
+  JSTest: require('./elements/js-test/js-test.js'),
 }
 
 // Layout engines take a config, and then a render function
