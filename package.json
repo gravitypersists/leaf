@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/gitpullgravity/leaf#readme",
   "dependencies": {
+    "chai": "^2.3.0",
+    "codemirror": "^5.3.0",
+    "jailed": "^0.2.0",
     "katex": "^0.2.0",
     "logician": "^1.0.0",
     "webcomponents.js": "^0.6.1"

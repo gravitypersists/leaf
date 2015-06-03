@@ -1,0 +1,40 @@
+{
+  "configSchema": [
+    {
+      "type": "Textarea",
+      "key": "beforeEach",
+      "placeholder": "Setup code to be run hidden from the student"
+    },
+    {
+      "type": "Textarea",
+      "key": "initialCode",
+      "placeholder": "Enter the code the student will first see"
+    },
+    {
+      "type": "Array",
+      "key": "tests",
+      "schema": [
+        {
+          "type": "Textarea",
+          "key": "test",
+          "placeholder": "Write a test"
+        },
+        {
+          "type": "Textarea",
+          "key": "feedback",
+          "placeholder": "Feedback for when the test fails."
+        }
+      ]
+    }
+  ],
+  "defaultConfig": {
+    "beforeEach": "",
+    "initialCode": "function sum( ) {\n\n}",
+    "tests": [
+      {
+        "test": "expect(sum(1, 20, 300, 4000, 50000)).to.eql(54321)",
+        "feedback": "Your function sum does not sum up multiple arguments."
+      }
+    ]
+  }
+}
