@@ -1,0 +1,41 @@
+{
+  "configSchema": [
+    {
+      "type": "Textarea",
+      "key": "query",
+      "placeholder": "Enter a question to ask the student"
+    }, {
+      "type": "Array",
+      "key": "options",
+      "schema": [
+        {
+          "type": "Textarea",
+          "key": "answer",
+          "placeholder": "Enter an answer the student can click on"
+        }, {
+          "type": "Textarea",
+          "key": "response",
+          "placeholder": "Enter a response the student will see when picking this option"
+        }
+      ]
+    }, {
+      "type": "Checkbox",
+      "key": "removeQuestionText",
+      "label": "Remove question text upon answering"
+    }
+  ],
+  "defaultConfig": {
+  "query": "Do you like me?",
+    "options": [
+      {
+        "answer": "Yes",
+        "response": "Aww, I like you too."
+      },
+      {
+        "answer": "No",
+        "response": ":("
+      }
+    ],
+    "removeQuestionText": false
+  }
+}
