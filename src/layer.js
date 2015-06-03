@@ -56,6 +56,7 @@ class Layer {
   // research more. This is just a simple exposed constructor for 
   // the time being.
   buildElementIntoLayer(element, el) {
+    element.uniqueId = this.depth+':'+element.elementId;
 
     let elToRenderInto = null;
     if (element.type === "Text") {
@@ -71,7 +72,7 @@ class Layer {
 
     // we keep track of these elements by id, so they can be accessed
     // externally, with tools like leafbuilder
-    this.leafScope.elements[this.depth+':'+element.elementId] = {
+    this.leafScope.elements[element.uniqueId] = {
       elementData: element,
       rebuild: (config) => {
         elToRenderInto.innerHTML = "";

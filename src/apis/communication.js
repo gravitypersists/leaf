@@ -21,7 +21,7 @@ class CommunicationInterface {
   }
 
   expose(property, value) {
-    let id = this.element.layerId + ':' + this.element.elementId;
+    let id = this.element.uniqueId;
     this.exposed[id] = this.exposed[id] || {};
     this.exposed[id][property] = value;
 
