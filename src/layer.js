@@ -63,7 +63,9 @@ class Layer {
     if (element.type === "Text") {
       elToRenderInto = el;
     } else {
-      let container = $create('<div class="shadow-container"></div>');
+      let container = $create(`
+        <div class="shadow-container" contenteditable="false"></div>
+      `);
       $append(el, container);
       elToRenderInto = container.createShadowRoot();
     }
