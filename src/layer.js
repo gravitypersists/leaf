@@ -32,7 +32,7 @@ const layouts = {
 // "element" refers to a leaf element. "el" refers to DOM element. Sorry.
 class Layer {
 
-  constructor(elements, layout, depth, el, leafScope, layers) {
+  constructor(elements, layout, depth, el, leafScope) {
     this.elements = elements;
     this.depth = depth;
     this.leafScope = leafScope; // this object is shared across all layers
